@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next QuikDB Song Library
 
-## Getting Started
+A Next.js application built for QuikDB’s practical task, showcasing a paginated song library with a secure API endpoint.
 
-First, run the development server:
+## Features
 
-```bash
+- **Responsive UI**: Displays 20 songs (5 per page) with titles, artists, images, and audio players.
+- **Pagination**: Client-side navigation using `useState` in `SongList.tsx`.
+- **Secure API**: `/api/songs` route with in-memory rate limiting (10 requests/minute per IP).
+- **Type Safety**: TypeScript ensures robust data handling via `Song` interface.
+
+## Tech Stack
+
+- **Next.js**: App Router for Server Components and API routes.
+- **TypeScript**: For type definitions (`src/types/index.ts`).
+- **Tailwind CSS**: Responsive styling in `globals.css`.
+- **Deployment**: Vercel or DigitalOcean compatible.
+
+## Project Structure
+
+next-quikdb/
+├── src/
+│ ├── app/
+│ │ ├── api/songs/route.ts # API route with GET handler
+│ │ ├── page.tsx # Homepage with direct GET call
+│ │ ├── layout.tsx # Root layout
+│ │ └── globals.css # Tailwind styles
+│ ├── components/
+│ │ ├── SongCard.tsx # Single song display
+│ │ └── SongList.tsx # Paginated song list
+│ └── types/
+│ └── index.ts # Song type definition
+├── next.config.js # Image domain config
+├── package.json # Dependencies
+├── writeup.md # Technical blog post
+└── README.md # This file
+
+## Installation
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/oderah/next-quikdb.git
+   cd next-quikdb
+   ```
+
+Install dependencies:
+bash
+
+npm install
+
+Run locally:
+bash
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Visit http://localhost:3000.
